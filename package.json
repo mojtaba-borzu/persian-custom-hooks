@@ -1,6 +1,6 @@
 {
   "name": "persian-custom-hooks",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A collection of custom React hooks for handling Persian-specific needs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     "persian",
     "custom-hooks"
   ],
-  "author": "Your Name",
+  "author": "mojtaba borzu",
   "license": "MIT",
   "scripts": {
     "build": "tsc"
@@ -19,8 +19,8 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "files": [
     "dist"
