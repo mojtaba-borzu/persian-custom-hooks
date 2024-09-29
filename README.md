@@ -42,6 +42,22 @@ const { formattedValue, formatBankCardNumber } = useFormatBankCardNumber();
 const { isValid, validateNationalCode } = useIranianNationalCodeValidation();
 ```
 
+4. useValidateBankCardNumber
+
+- This hook is used to validate bank card number codes.
+
+```
+const { isValid, validateBankCardNumber } = useValidateBankCardNumber();
+```
+
+5. useValidateIranianMobileNumber
+
+- This hook is used to validate Iranian mobile number codes.
+
+```
+const { isValid, validateIranianMobileNumber } = useValidateIranianMobileNumber();
+```
+
 ## License
 
 This project is released under the MIT License. For more information, see the LICENSE file.
