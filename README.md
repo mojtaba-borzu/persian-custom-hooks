@@ -44,7 +44,7 @@ const { isValid, validateNationalCode } = useIranianNationalCodeValidation();
 
 4. useValidateBankCardNumber
 
-- This hook is used to validate bank card number codes.
+- This hook is used to validate bank card number.
 
 ```
 const { isValid, validateBankCardNumber } = useValidateBankCardNumber();
@@ -52,10 +52,18 @@ const { isValid, validateBankCardNumber } = useValidateBankCardNumber();
 
 5. useValidateIranianMobileNumber
 
-- This hook is used to validate Iranian mobile number codes.
+- This hook is used to validate Iranian mobile number.
 
 ```
 const { isValid, validateIranianMobileNumber } = useValidateIranianMobileNumber();
+```
+
+6. useExtractBankCardNumber
+
+- This hook is used to extract bank card number.
+
+```
+const { cardNumber, extractBankCardNumber } = useExtractBankCardNumber();
 ```
 
 ## License
