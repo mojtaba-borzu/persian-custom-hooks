@@ -1,22 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useIranianNationalCodeValidation = void 0;
-// lins
 var react_1 = require("react");
 var useIranianNationalCodeValidation = function () {
-    //states
     var _a = (0, react_1.useState)(null), isValid = _a[0], setIsValid = _a[1];
-    // function validation
     var validateNationalCode = function (code) {
         if (!/^\d{10}$/.test(code)) {
             setIsValid(false);
-            return;
+            return false;
         }
         var digits = code.split("").map(Number);
         var allDigitsSame = digits.every(function (digit) { return digit === digits[0]; });
         if (allDigitsSame) {
             setIsValid(false);
-            return;
+            return false;
         }
         var sum = digits[0] * 10 +
             digits[1] * 9 +
@@ -29,12 +26,11 @@ var useIranianNationalCodeValidation = function () {
             digits[8] * 2;
         var remainder = sum % 11;
         var controlDigit = digits[9];
-        if (remainder < 2) {
-            setIsValid(controlDigit === remainder);
-        }
-        else {
-            setIsValid(controlDigit === 11 - remainder);
-        }
+        var result = remainder < 2
+            ? controlDigit === remainder
+            : controlDigit === 11 - remainder;
+        setIsValid(result);
+        return result;
     };
     return { isValid: isValid, validateNationalCode: validateNationalCode };
 };

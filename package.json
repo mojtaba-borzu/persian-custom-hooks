@@ -16,6 +16,8 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
@@ -24,5 +26,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
