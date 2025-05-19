@@ -1,35 +1,29 @@
-// lins
 import { useState } from "react"
 
-// inter
 interface UseIranianNationalCodeValidation {
   isValid: boolean | null
-  validateNationalCode: (code: string) => void
+  validateNationalCode: (code: string) => boolean
 }
 
 export const useIranianNationalCodeValidation =
   (): UseIranianNationalCodeValidation => {
-    //states
     const [isValid, setIsValid] = useState<boolean | null>(null)
 
-    // function validation
-    const validateNationalCode = (code: string): void => {
+    const validateNationalCode = (code: string): boolean => {
       if (!/^\d{10}$/.test(code)) {
         setIsValid(false)
-        return
+        return false
       }
 
-      const digits: number[] = code.split("").map(Number)
+      const digits = code.split("").map(Number)
 
-      const allDigitsSame: boolean = digits.every(
-        (digit) => digit === digits[0]
-      )
+      const allDigitsSame = digits.every((digit) => digit === digits[0])
       if (allDigitsSame) {
         setIsValid(false)
-        return
+        return false
       }
 
-      const sum: number =
+      const sum =
         digits[0] * 10 +
         digits[1] * 9 +
         digits[2] * 8 +
@@ -40,14 +34,16 @@ export const useIranianNationalCodeValidation =
         digits[7] * 3 +
         digits[8] * 2
 
-      const remainder: number = sum % 11
+      const remainder = sum % 11
+      const controlDigit = digits[9]
 
-      const controlDigit: number = digits[9]
-      if (remainder < 2) {
-        setIsValid(controlDigit === remainder)
-      } else {
-        setIsValid(controlDigit === 11 - remainder)
-      }
+      const result =
+        remainder < 2
+          ? controlDigit === remainder
+          : controlDigit === 11 - remainder
+
+      setIsValid(result)
+      return result
     }
 
     return { isValid, validateNationalCode }
